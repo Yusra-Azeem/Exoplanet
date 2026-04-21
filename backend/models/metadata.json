@@ -1,0 +1,49 @@
+{
+  "model_name": "Logistic Regression",
+  "target": "HABITABLE",
+  "classes": [
+    "Not Habitable",
+    "Habitable"
+  ],
+  "selected_features": [
+    "P_RADIUS_ERROR_MAX",
+    "S_DEC",
+    "S_DISTANCE",
+    "P_HABZONE_CON",
+    "P_ESI",
+    "koi_prad",
+    "P_MASS_EST",
+    "P_UPDATED",
+    "S_ALT_NAMES",
+    "S_RA_T",
+    "S_DEC_T",
+    "S_CONSTELLATION_ABR",
+    "TEMP_IN_WATER_ZONE",
+    "FLUX_IN_HZ",
+    "ESI_ABOVE_06",
+    "ESI_ABOVE_08",
+    "SOLAR_LIKE_STAR",
+    "PERIOD_EARTH_LIKE",
+    "koi_pmass",
+    "LOG_S_LUMINOSITY"
+  ],
+  "sampling_strategy": "SMOTETomek",
+  "scaler": "RobustScaler",
+  "imputer": "IterativeImputer",
+  "metrics": {
+    "recall": 1.0,
+    "auc_roc": 0.998,
+    "precision": 0.6471,
+    "f1": 0.7857,
+    "mcc": 0.8014
+  },
+  "feature_bridge": {
+    "koi_prad": "P_RADIUS_EST",
+    "koi_teq": "P_TEMP_EQUIL",
+    "koi_insol": "P_FLUX",
+    "koi_steff": "S_TEMPERATURE",
+    "koi_slogg": "S_LOG_G",
+    "koi_srad": "S_RADIUS",
+    "koi_period": "P_PERIOD"
+  }
+}

@@ -1,8 +1,4 @@
-Here is a **complete, polished single README.md** for your **Exoplanet Detection + Habitability (React + FastAPI + ML)** project. You can directly paste this into GitHub:
 
----
-
-```md id="fullreadme"
 # 🌌 Exoplanet Detection & Habitability Prediction
 
 This project uses Machine Learning to detect **exoplanets** and predict their **habitability status** based on astronomical features.

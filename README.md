@@ -1,97 +1,34 @@
 
 # 🌌 Exoplanet Detection & Habitability Prediction
 
-This project uses Machine Learning to detect **exoplanets** and predict their **habitability status** based on astronomical features.
+This project uses Machine Learning to analyze astronomical data and perform:
+- 🪐 Exoplanet Detection  
+- 🌍 Habitability Prediction  
 
-It combines:
-- 🧠 Machine Learning models (XGBoost / Logistic Regression)
-- 🐍 FastAPI backend for serving predictions
-- ⚛️ React frontend for user interaction
+The system combines both models to identify whether a celestial object is an exoplanet and whether it could support Earth-like life.
 
 ---
 
 # 🚀 Project Objective
 
 - Detect whether a celestial object is an **exoplanet**
-- Predict whether it is **habitable (Earth-like conditions)**
-- Provide real-time predictions via a web interface
-
----
-
-# 📊 Dataset
-
-We use NASA Kepler Object of Interest (KOI) dataset and habitability-related features.
-
-### Key Features:
-- Orbital period
-- Planet radius
-- Stellar flux
-- Distance from star
-- Equilibrium temperature
-- Signal-to-noise ratio
-- Luminosity and derived habitability features
+- Predict whether the exoplanet is **habitable**
+- Build an end-to-end ML system with API + frontend
 
 ---
 
 # 🧠 Machine Learning Models
 
-## 🔹 Exoplanet Detection Model
-- Logistic Regression
-- Random Forest
-- XGBoost (final model)
+## 🔹 Exoplanet Detection
+- Dataset preprocessing
+- Feature engineering
+- Classification model (Logistic Regression / XGBoost / Random Forest)
 
-## 🔹 Habitability Model
-- XGBoost / Logistic Regression
-- Feature engineering based on:
-  - Earth-like temperature range
-  - Flux similarity
-  - Radius constraints
-
----
-
-# ⚙️ Project Pipeline
-
-1. Data Cleaning & Preprocessing  
-2. Feature Engineering  
-3. Handling Missing Values  
-4. Train-Test Split  
-5. Model Training (Detection + Habitability)  
-6. Evaluation  
-7. API Deployment using FastAPI  
-8. Frontend integration using React  
-
----
-
-# 📈 Evaluation Metrics
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
-Special focus:
-- Reducing false positives in habitability detection
-
----
-
-# 🛠️ Tech Stack
-
-## Backend
-- Python 🐍
-- FastAPI
-- Scikit-learn
-- XGBoost
-- Pandas / NumPy
-
-## Frontend
-- React ⚛️
-- JavaScript
-- Axios / Fetch API
-
-## Visualization
-- Matplotlib
-- Seaborn
+## 🔹 Habitability Prediction
+- Earth-like feature engineering
+- Flux, temperature, and radius-based conditions
+- XGBoost / Logistic Regression model
+- Focus on reducing false positives in habitability detection
 
 ---
 
@@ -99,101 +36,64 @@ Special focus:
 
 ```
 
-Exoplanet/
+project/
 │
 ├── backend/
 │   ├── main.py
-│   ├── model.pkl
-│   ├── preprocessing.py
-│   └── requirements.txt
+│   ├── model files
+│   └── ML pipeline code
 │
 ├── frontend/
 │   ├── src/
 │   ├── package.json
-│   └── vite.config.js
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── notebooks/
-│   └── exploration.ipynb
-│
-└── README.md
+│   └── UI components
 
-````
+````id="str1"
 
 ---
 
 # 🚀 How to Run the Project
 
 This project has two parts:
-- ⚛️ Frontend (React)
 - 🐍 Backend (FastAPI)
+- ⚛️ Frontend (React)
 
-You need to run both separately.
+Run both separately.
 
 ---
 
-## 📥 1. Clone the Repository
+# 🐍 Backend Setup
+
+## 📌 Go to backend folder
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+cd backend
 ````
 
 ---
 
-# 🐍 Backend Setup (FastAPI)
+## 📌 Install dependencies (manual)
 
-## 📌 Go to backend folder
+Since there is no `requirements.txt`:
 
-```bash
-cd backend
-```
-
-## 📌 Create virtual environment
-
-```bash
-python -m venv venv
-```
-
-### Activate it:
-
-**Windows**
-
-```bash
-venv\Scripts\activate
-```
-
-**Mac/Linux**
-
-```bash
-source venv/bin/activate
+```bash id="inst1"
+pip install fastapi uvicorn pandas numpy scikit-learn xgboost
 ```
 
 ---
 
-## 📌 Install dependencies
+## 📌 Run backend
 
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 📌 Run FastAPI server
-
-```bash
+```bash id="run1"
 uvicorn main:app --reload
 ```
 
-👉 Backend runs at:
+👉 Backend:
 
 ```
 http://127.0.0.1:8000
 ```
 
-👉 API docs:
+👉 API Docs:
 
 ```
 http://127.0.0.1:8000/docs
@@ -201,7 +101,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# ⚛️ Frontend Setup (React)
+# ⚛️ Frontend Setup
 
 ## 📌 Go to frontend folder
 
@@ -209,19 +109,23 @@ http://127.0.0.1:8000/docs
 cd frontend
 ```
 
+---
+
 ## 📌 Install dependencies
 
-```bash
+```bash id="inst2"
 npm install
 ```
 
-## 📌 Start React app
+---
 
-```bash
+## 📌 Run frontend
+
+```bash id="run2"
 npm run dev
 ```
 
-👉 Frontend runs at:
+👉 Frontend:
 
 ```
 http://localhost:5173
@@ -229,33 +133,19 @@ http://localhost:5173
 
 ---
 
-# 🔗 Connecting Frontend & Backend
+# 🔗 API Connection
 
-Make sure React calls FastAPI backend:
+Frontend communicates with backend using:
 
-```js
+```js id="api"
 http://127.0.0.1:8000/predict
-```
-
-Example:
-
-```js
-fetch("http://127.0.0.1:8000/predict", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
-})
 ```
 
 ---
 
-# ⚠️ CORS Fix (Important)
+# ⚠️ CORS Fix (if needed)
 
-If frontend cannot connect to backend, add this in FastAPI:
-
-```python
+```python id="cors"
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
@@ -272,41 +162,58 @@ app.add_middleware(
 # 🧠 System Flow
 
 ```
-React UI → FastAPI Backend → ML Model → Prediction → UI Display
+Frontend (React)
+      ↓
+FastAPI Backend
+      ↓
+ML Models (Detection + Habitability)
+      ↓
+Prediction Output
+      ↓
+Frontend UI Display
 ```
 
 ---
 
-# 🔬 Key Challenges
+# 🔬 Key Features
 
-* Handling missing astrophysical data
-* Imbalanced classification
-* Combining multiple datasets (KOI + habitability features)
-* Ensuring stable predictions across models
+* Exoplanet detection using ML
+* Habitability classification system
+* End-to-end API integration
+* Real-time prediction UI
+
+---
+
+# 🤝 Contributors
+
+This project was developed collaboratively:
+
+* **Yusra Azeem**
+  🔹 Habitability Prediction Model
+  🔹 Feature Engineering & ML Pipeline
+  🔹 FastAPI Backend Integration
+
+* **Roshni (@Roshni8954)**
+  🔹 Exoplanet Detection Model
+  🔹 Dataset preprocessing
+  🔹 Model training and evaluation
 
 ---
 
 # 🚀 Future Improvements
 
-* Deep Learning model for habitability scoring
-* Real-time NASA API integration
-* Explainable AI (why a planet is habitable)
-* Interactive dashboard for visualization
+* Deep learning-based habitability scoring
 * Deployment on cloud (Render / Vercel)
+* Interactive dashboard for visualization
+* Explainable AI for predictions
 
 ---
 
 # 👩‍🚀 Author
 
 **Yusra Azeem**
-GitHub: [Yusra-Azeem](https://github.com/Yusra-Azeem)
-**Roshni**
-Github: (https://github.com/Roshni8954)
----
+GitHub: [https://github.com/Yusra-Azeem](https://github.com/Yusra-Azeem)
 
-# ⭐ Acknowledgements
+**Roshni**  https://github.com/Roshni8954
 
-* NASA Exoplanet Archive
-* Planetary Habitability Laboratory (PHL)
-* Scikit-learn & XGBoost community
 

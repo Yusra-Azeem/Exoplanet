@@ -1,9 +1,4 @@
-# backend/main.py  ── FIXED VERSION
-# Fix applied: hab_imputer was trained on raw PHL columns (P_FLUX, P_DISTANCE etc.)
-# but backend was sending it engineered feature names (FLUX_IN_HZ, ESI_ABOVE_06 etc.)
-# Solution: skip the imputer entirely in backend inference — user input has no
-# missing values, so imputation is unnecessary. Feed scaler + model directly.
-
+#python -m uvicorn main:app --reload
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -131,13 +126,7 @@ def _run_detection(data: dict):
 
     X = np.array([[data[f] for f in DETECT_FEATURES]])
 
-    # Apply Person A's scaler only if she used it during training
-    # Person A's XGBoost was trained WITHOUT scaling (XGBoost doesn't need it)
-    # but she saved a scaler anyway — only apply if her training used it
-    # Safe default: don't apply (XGBoost is scale-invariant)
-    # If results look wrong, try uncommenting the two lines below:
-    # if detect_scaler is not None:
-    #     X = detect_scaler.transform(X)
+    
 
     prob = float(detect_model.predict_proba(X)[0][1])
     return prob, "xgboost_model"
@@ -147,7 +136,7 @@ def _run_habitability(data: dict):
     if hab_model is None:
         return _physics_habitability_fallback(data), "physics_heuristic"
 
-    # Compute the same features Person B created in her step 04
+    # Compute the same features Person B created
     r   = data['koi_prad']
     t   = data['koi_teq']
     f   = data['koi_insol']

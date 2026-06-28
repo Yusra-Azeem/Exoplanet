@@ -1,5 +1,5 @@
 {
-  "model_name": "XGBoost",
+  "model_name": "Logistic Regression",
   "target": "HABITABLE",
   "classes": [
     "Not Habitable",
@@ -32,10 +32,10 @@
   "imputer": "IterativeImputer",
   "metrics": {
     "recall": 1.0,
-    "auc_roc": 0.9983,
-    "precision": 0.7333,
-    "f1": 0.8462,
-    "mcc": 0.8542
+    "auc_roc": 0.998,
+    "precision": 0.6471,
+    "f1": 0.7857,
+    "mcc": 0.8014
   },
   "feature_bridge": {
     "koi_prad": "P_RADIUS_EST",

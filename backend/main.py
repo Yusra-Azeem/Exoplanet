@@ -34,17 +34,21 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-origins = [
+origins = {
     "http://localhost:3000",
-]
+    "http://localhost:5173",
+    "https://exoplanet-iota.vercel.app",
+}
 
-frontend_url = os.getenv("FRONTEND_URL")
-if frontend_url:
-    origins.append(frontend_url)
+for env_name in ("FRONTEND_URL", "FRONTEND_URLS"):
+    for origin in os.getenv(env_name, "").split(","):
+        origin = origin.strip().rstrip("/")
+        if origin:
+            origins.add(origin)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=sorted(origins),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

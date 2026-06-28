@@ -43,7 +43,8 @@ For confirmed planets, predicts whether they are potentially **habitable** using
 
 # 📸 Demo
 
-> **Add screenshots/GIF here**
+<img width="1359" height="572" alt="image" src="https://github.com/user-attachments/assets/f0346ba3-1ef8-497a-a4ed-5b7f4972eeea" />
+
 
 * Home Page
 * Prediction Form

@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 from typing import Tuple
 
-from backend.config import DETECT_FEATURES
-from backend.models.loader import registry
-from backend.services.physics import physics_detection
+from config import DETECT_FEATURES
+from models.loader import registry
+from services.physics import physics_detection
 
 
 def run_detection(data: dict) -> Tuple[float, str]:

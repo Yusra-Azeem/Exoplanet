@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from backend.schemas import PlanetInput, PredictResponse
-from backend.services.detection import run_detection
-from backend.services.habitability import run_habitability
-from backend.services.physics import hz_checks
+from schemas import PlanetInput, PredictResponse
+from services.detection import run_detection
+from services.habitability import run_habitability
+from services.physics import hz_checks
 
 router = APIRouter(prefix="/predict", tags=["predict"])
 

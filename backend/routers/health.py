@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from backend.models.loader import registry
-from backend.config import DETECT_FEATURES
+from models.loader import registry
+from config import DETECT_FEATURES
 
 router = APIRouter(tags=["health"])
 

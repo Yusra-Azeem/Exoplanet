@@ -5,12 +5,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.config import (
+from config import (
     DETECTION_MODEL_PATH, DETECTION_SCALER_PATH,
     HAB_MODEL_PATH, HAB_SCALER_PATH, HAB_IMPUTER_PATH, HAB_FEATURES_PATH,
 )
-from backend.models.loader import registry
-from backend.routers import predict, health
+from models.loader import registry
+from routers import predict, health
 
 warnings.filterwarnings("ignore")
 

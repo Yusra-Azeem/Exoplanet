@@ -11,8 +11,8 @@ import numpy as np
 import pandas as pd
 from typing import Tuple
 
-from backend.models.loader import registry
-from backend.services.physics import physics_habitability
+from models.loader import registry
+from services.physics import physics_habitability
 
 
 def _build_feature_dict(data: dict) -> dict:

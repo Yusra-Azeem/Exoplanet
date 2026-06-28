@@ -5,12 +5,20 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from config import (
-    DETECTION_MODEL_PATH, DETECTION_SCALER_PATH,
-    HAB_MODEL_PATH, HAB_SCALER_PATH, HAB_IMPUTER_PATH, HAB_FEATURES_PATH,
-)
-from models.loader import registry
-from routers import predict, health
+try:
+    from config import (
+        DETECTION_MODEL_PATH, DETECTION_SCALER_PATH,
+        HAB_MODEL_PATH, HAB_SCALER_PATH, HAB_IMPUTER_PATH, HAB_FEATURES_PATH,
+    )
+    from models.loader import registry
+    from routers import predict, health
+except ModuleNotFoundError:
+    from backend.config import (
+        DETECTION_MODEL_PATH, DETECTION_SCALER_PATH,
+        HAB_MODEL_PATH, HAB_SCALER_PATH, HAB_IMPUTER_PATH, HAB_FEATURES_PATH,
+    )
+    from backend.models.loader import registry
+    from backend.routers import predict, health
 
 warnings.filterwarnings("ignore")
 
@@ -49,6 +57,7 @@ for env_name in ("FRONTEND_URL", "FRONTEND_URLS"):
 app.add_middleware(
     CORSMiddleware,
     allow_origins=sorted(origins),
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

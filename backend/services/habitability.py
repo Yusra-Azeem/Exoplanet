@@ -11,8 +11,12 @@ import numpy as np
 import pandas as pd
 from typing import Tuple
 
-from models.loader import registry
-from services.physics import physics_habitability
+try:
+    from models.loader import registry
+    from services.physics import physics_habitability
+except ModuleNotFoundError:
+    from backend.models.loader import registry
+    from backend.services.physics import physics_habitability
 
 
 def _build_feature_dict(data: dict) -> dict:

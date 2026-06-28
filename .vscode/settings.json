@@ -1,3 +1,4 @@
 {
-    "python.defaultInterpreterPath": "e:\\exoplanet\\backend\\.venv\\Scripts\\python.exe"
+    "python.defaultInterpreterPath": "e:\\exoplanet\\backend\\.venv\\Scripts\\python.exe",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }

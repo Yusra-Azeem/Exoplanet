@@ -177,7 +177,7 @@ Prediction + Explainability
 
 ---
 
-# 🔍 Explainable AI
+# 🔍 Explainable Interface
 
 The project uses **SHAP (SHapley Additive Explanations)** to interpret model predictions and identify the most influential planetary and stellar features affecting habitability.
 

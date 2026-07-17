@@ -56,6 +56,7 @@ For confirmed planets, predicts whether they are potentially **habitable** using
 ---
 
 # 🏗️ Architecture
+<img width="1536" height="1024" alt="Exoplanet" src="https://github.com/user-attachments/assets/1a0852de-264a-4273-810f-2a028b274b1c" />
 
 ```text
 User Input
